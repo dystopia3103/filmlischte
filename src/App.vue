@@ -45,24 +45,23 @@ onMounted(() => {
         <p class="title">Film lischte</p>
         <div class="card">
           <div class="card-content">
-            <div v-for="movie in movies" :key="movie">
-              <b-tag icon="movie" class="is-primary is-large" closable @close="removeMovie(movie)">
+            <b-taglist>
+              <b-tag v-for="movie in movies" :key="movie" icon="movie" class="is-primary is-large" closable
+                     @close="removeMovie(movie)">
                 {{ movie.get("name") }}
               </b-tag>
-              <br class="mb-3"/>
-            </div>
+            </b-taglist>
+
           </div>
         </div>
         <div class="card mt-5">
-          <div class="card-content has-text-left">
-            <div class="container">
-              <b-field :type="inputType" label="Name" label-position="on-border">
-                <b-input expanded icon="movie" placeholder="Film do ine schribe brudi..." v-model="newMovie"></b-input>
-                <p class="control">
-                  <b-button class="button is-primary" @click="addMovie">Mach mal ine</b-button>
-                </p>
-              </b-field>
-            </div>
+          <div class="container has-text-left">
+            <b-field :type="inputType" label="Name" label-position="on-border">
+              <b-input expanded icon="movie" placeholder="Film do ine schribe brudi..." v-model="newMovie"></b-input>
+              <p class="control">
+                <b-button class="button is-primary" @click="addMovie" icon-right="plus"/>
+              </p>
+            </b-field>
           </div>
         </div>
       </div>
